@@ -1,26 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Cart,
+  Checkout,
+  HomeLayout,
+  Landing,
+  Login,
+  OrderConfirmation,
+  OrderHistory,
+  Register,
+  Search,
+  Shop,
+  SingleOrderHistory,
+  SingleProduct,
+  UserProfile,
+} from "./pages";
+import { checkoutAction, searchAction } from "./actions/index";
+import { shopCategoryLoader } from "./pages/Shop";
+import { loader as orderHistoryLoader } from "./pages/OrderHistory";
+import { loader as singleOrderLoader } from "./pages/SingleOrderHistory";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
+      },
+      {
+        path: "shop/:category",
+        element: <Shop />,
+        loader: shopCategoryLoader,
+      },
+      {
+        path: "product/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+        action: checkoutAction,
+      },
+      {
+        path: "search",
+        action: searchAction,
+        element: <Search />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "order-confirmation",
+        element: <OrderConfirmation />,
+      },
+      {
+        path: "user-profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "order-history",
+        element: <OrderHistory />,
+        loader: orderHistoryLoader,
+      },
+      {
+        path: "order-history/:id",
+        element: <SingleOrderHistory />,
+        loader: singleOrderLoader
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
