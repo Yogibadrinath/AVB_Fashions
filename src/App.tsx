@@ -66,7 +66,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    // basename: "/AVB_Fashions", // required for subfolder hosting / GitHub Pages
+    basename: "/AVB_Fashions", // required for subfolder hosting / GitHub Pages
   }
 );
 
