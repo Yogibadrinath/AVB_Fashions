@@ -22,12 +22,12 @@ const ProductItem = ({
 
   useEffect(() => {
     console.log("id", id)
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
-}, []);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <div className="w-[400px] flex flex-col gap-2 justify-center max-md:w-[300px]">
@@ -36,7 +36,16 @@ const ProductItem = ({
         // to={`/product/${id}`}
         className="w-full h-[300px] max-md:h-[200px] overflow-hidden"
       >
-        <img src={new URL(`../assets/${image}`, import.meta.url).href} alt={title} />
+        <img
+          src={`${import.meta.env.BASE_URL}assets/${encodeURIComponent(
+            image.trim().replace(/\s+/g, "_")
+          )}`}
+          alt={title}
+          onError={(e) => {
+            e.currentTarget.src = `${import.meta.env.BASE_URL}assets/placeholder.jpg`;
+          }}
+        />
+
       </Link>
       <Link
         to={`#`}
