@@ -21,6 +21,7 @@ const ProductItem = ({
 }) => {
 
   useEffect(() => {
+    console.log("id", id)
   window.scrollTo({
     top: 0,
     left: 0,
