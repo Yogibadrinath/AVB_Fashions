@@ -24,7 +24,7 @@ const ProductItem = ({
         to={`/product/${id}`}
         className="w-full h-[300px] max-md:h-[200px] overflow-hidden"
       >
-        <img src={`assets/${image}`} alt={title} />
+        <img src={new URL(`../assets/${image}`, import.meta.url).href} alt={title} />
       </Link>
       <Link
         to={`/product/${id}`}
