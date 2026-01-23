@@ -83,7 +83,8 @@ const SidebarMenu = ({
           <NavLink
             to="/"
             onClick={closeSidebar}
-            className="text-xl tracking-[0.35em] uppercase text-white"
+            className="text-xl tracking-[0.35em] uppercase text-white text-decoration-none"
+            style={{'textShadow': '4px 3px 1px black'}}
           >
             AVB Fashions
           </NavLink>

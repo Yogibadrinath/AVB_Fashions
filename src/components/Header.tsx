@@ -14,7 +14,8 @@ const Header = () => {
       <HiBars3 className="text-2xl max-sm:text-xl mr-20 max-lg:mr-0 cursor-pointer text-white" onClick={() => setIsSidebarOpen(true)} />
       <Link
         to="/"
-        className="text-2xl font-light tracking-[1.08px] main-header text-white"
+        className="text-2xl font-light tracking-[1.08px] main-header text-white text-decoration-none"
+        style={{'textShadow': '4px 3px 1px black'}}
       >
         AVB FASHIONS
       </Link>
