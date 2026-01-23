@@ -1,7 +1,7 @@
 import { HiBars3 } from "react-icons/hi2";
-import { HiOutlineUser } from "react-icons/hi2";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+// import { HiOutlineUser } from "react-icons/hi2";
+// import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+// import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 import { useState } from "react";
@@ -10,11 +10,11 @@ const Header = () => {
   const [ isSidebarOpen, setIsSidebarOpen ] = useState(false);
   return (
     <>
-    <header className="max-w-screen-2xl flex text-center justify-between items-center px-5 text-black mx-auto max-sm:px-5 max-[400px]:px-3 fixed-top bg-brown z-50 header-padding-y">
+    <header className="max-w-screen-2xl flex text-center justify-between items-center px-5 text-black mx-auto max-sm:px-5 max-[400px]:px-3 fixed-top bg-common-color z-50 header-padding-y" style={{'zIndex': '1'}}>
       <HiBars3 className="text-2xl max-sm:text-xl mr-20 max-lg:mr-0 cursor-pointer text-white" onClick={() => setIsSidebarOpen(true)} />
       <Link
         to="/"
-        className="text-2xl font-light tracking-[1.08px] text-decoration-none text-white"
+        className="text-2xl font-light tracking-[1.08px] main-header text-white"
       >
         AVB FASHIONS
       </Link>

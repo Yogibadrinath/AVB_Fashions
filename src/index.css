@@ -58,3 +58,45 @@ body {
 .bg-brown {
   background-color: brown !important;
 }
+
+.z-9999 {
+  z-index: 9999 !important;
+}
+
+.bg-common-color {
+  background-color: brown !important;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  text-align: center;
+  color: white;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  background-color: #f3e6d8;
+  color: #5a2d0c;
+}
+
+.menu-item-active {
+  background-color: #f3e6d8;
+  /* warm beige */
+  color: #5a2d0c !important;
+  /* deep brown */
+  font-weight: 500;
+}
+
+.main-header {
+  font-weight: 500;
+  width: 100%;
+  /* padding: 12px 0; */
+  font-size: 1.1rem;
+  text-align: center;
+  color: white;
+  transition: all 0.25s ease;
+}

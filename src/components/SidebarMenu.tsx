@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { HiXMark } from "react-icons/hi2";
-import { Link, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../hooks";
-import { setLoginStatus } from "../features/auth/authSlice";
-import { store } from "../store";
+import { NavLink } from "react-router-dom";
+// import { useAppSelector } from "../hooks";
+// import { setLoginStatus } from "../features/auth/authSlice";
+// import { store } from "../store";
 
 const SidebarMenu = ({
   isSidebarOpen,
@@ -13,134 +13,114 @@ const SidebarMenu = ({
   isSidebarOpen: boolean;
   setIsSidebarOpen: (prev: boolean) => void;
 }) => {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const { loginStatus } = useAppSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  // const { loginStatus } = useAppSelector((state) => state.auth);
+  // const navigate = useNavigate();
 
-  const logout = () => {
-    toast.error("Logged out successfully");
-    localStorage.removeItem("user");
-    store.dispatch(setLoginStatus(false));
-    navigate("/login");
-    setIsSidebarOpen(false);
-  };
+  const closeSidebar = () => setIsSidebarOpen(false);
+
+  // const logout = () => {
+  //   toast.error("Logged out successfully");
+  //   localStorage.removeItem("user");
+  //   store.dispatch(setLoginStatus(false));
+  //   navigate("/login");
+  //   closeSidebar();
+  // };
 
   useEffect(() => {
     if (isSidebarOpen) {
-      setIsAnimating(true);
+      setMounted(true);
       document.body.style.overflow = "hidden";
+
+      // 👇 ensure first render happens OFF-screen
+      setVisible(false);
+
+      const timer = setTimeout(() => {
+        setVisible(true);
+      }, 10); // small delay guarantees paint
+
+      return () => clearTimeout(timer);
     } else {
+      setVisible(false);
       document.body.style.overflow = "auto";
-      const timer = setTimeout(() => setIsAnimating(false), 300);
+
+      const timer = setTimeout(() => setMounted(false), 300);
       return () => clearTimeout(timer);
     }
   }, [isSidebarOpen]);
 
-  const closeSidebar = () => setIsSidebarOpen(false);
+  const navClass = ({ isActive }: { isActive: boolean }) =>
+    `menu-item ${isActive ? "menu-item-active" : ""}`;
+
+  if (!mounted) return null;
 
   return (
     <>
-      {(isSidebarOpen || isAnimating) && (
-        <>
-          {/* BACKDROP */}
-          <div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+      {/* BACKDROP */}
+      <div
+        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+        onClick={closeSidebar}
+      />
+
+      {/* SIDEBAR */}
+      <div
+        className={`fixed top-0 left-0 z-50 h-full w-72 bg-common-color shadow-2xl
+        transform transition-transform duration-300 ease-out
+        ${visible ? "translate-x-0" : "-translate-x-full"}`}
+      >
+        {/* HEADER */}
+        <div className="flex items-center justify-between px-4 py-4 border-b border-white/20">
+          <span className="text-sm tracking-widest text-white">MENU</span>
+          <HiXMark
+            className="text-3xl text-white cursor-pointer hover:rotate-90 transition-transform"
             onClick={closeSidebar}
           />
+        </div>
 
-          {/* SIDEBAR */}
-          <div
-            className={
-              isSidebarOpen
-                ? "fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-2xl transform translate-x-0 transition-transform duration-300 ease-out"
-                : "fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out"
-            }
+        {/* BRAND */}
+        <div className="flex justify-center py-6 border-b border-white/20">
+          <NavLink
+            to="/"
+            onClick={closeSidebar}
+            className="text-xl tracking-[0.35em] uppercase text-white"
           >
-            {/* HEADER */}
-            <div className="flex items-center justify-between px-4 py-4 border-b">
-              <span className="text-sm tracking-widest text-gray-500">
-                MENU
-              </span>
-              <HiXMark
-                className="text-3xl cursor-pointer hover:rotate-90 transition-transform duration-200"
-                onClick={closeSidebar}
-              />
-            </div>
+            AVB Fashions
+          </NavLink>
+        </div>
 
-            {/* BRAND */}
-            <div className="flex justify-center py-6 border-b">
-              <Link
-                to="/"
-                onClick={closeSidebar}
-                className="text-3xl font-light tracking-[0.35em] uppercase"
-              >
-                Fashion
-              </Link>
-            </div>
+        {/* NAV */}
+        <div className="flex flex-col mt-6">
+          <NavLink to="/" className={navClass} onClick={closeSidebar}>
+            Home
+          </NavLink>
+          <NavLink to="/shop" className={navClass} onClick={closeSidebar}>
+            Shop
+          </NavLink>
+          <NavLink to="/search" className={navClass} onClick={closeSidebar}>
+            Search
+          </NavLink>
 
-            {/* NAV LINKS */}
-            <div className="flex flex-col mt-6">
-              <Link to="/" onClick={closeSidebar} className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none">
-                Home
-              </Link>
-              <Link to="/shop" onClick={closeSidebar} className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none">
-                Shop
-              </Link>
-              <Link to="/search" onClick={closeSidebar} className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none">
-                Search
-              </Link>
+          {/* {loginStatus ? (
+            <button onClick={logout} className="menu-item">
+              Logout
+            </button>
+          ) : (
+            <>
+              <NavLink to="/login" className={navClass} onClick={closeSidebar}>
+                Sign in
+              </NavLink>
+              <NavLink to="/register" className={navClass} onClick={closeSidebar}>
+                Sign up
+              </NavLink>
+            </>
+          )}
 
-              {loginStatus ? (
-                <button onClick={logout} className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none">
-                  Logout
-                </button>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    onClick={closeSidebar}
-                    className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={closeSidebar}
-                    className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none"
-                  >
-                    Sign up
-                  </Link>
-                </>
-              )}
-
-              <Link to="/cart" onClick={closeSidebar} className="w-full py-3 text-lg font-light tracking-wide 
-           text-gray-800 text-center cursor-pointer
-           transition-all duration-200 ease-in-out
-           hover:bg-black hover:text-white text-decoration-none">
-                Cart
-              </Link>
-            </div>
-          </div>
-        </>
-      )}
+          <NavLink to="/cart" className={navClass} onClick={closeSidebar}>
+            Cart
+          </NavLink> */}
+        </div>
+      </div>
     </>
   );
 };
