@@ -1,77 +1,35 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import {
-  Cart,
-  Checkout,
-  HomeLayout,
-  Landing,
-  Login,
-  OrderConfirmation,
-  OrderHistory,
-  Register,
-  Search,
-  Shop,
-  SingleOrderHistory,
-  SingleProduct,
-  UserProfile,
-} from "./pages";
-import { checkoutAction, searchAction } from "./actions";
-import { shopCategoryLoader } from "./pages/Shop";
-import { loader as orderHistoryLoader } from "./pages/OrderHistory";
-import { loader as singleOrderLoader } from "./pages/SingleOrderHistory";
-
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <HomeLayout />,
-      children: [
-        { index: true, element: <Landing /> },
-
-        { path: "shop", element: <Shop /> },
-        { path: "shop/:category", element: <Shop />, loader: shopCategoryLoader },
-
-        { path: "product/:id", element: <SingleProduct /> },
-        { path: "cart", element: <Cart /> },
-
-        {
-          path: "checkout",
-          element: <Checkout />,
-          action: checkoutAction,
-        },
-
-        {
-          path: "search",
-          element: <Search />,
-          action: searchAction,
-        },
-
-        { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
-
-        { path: "order-confirmation", element: <OrderConfirmation /> },
-        { path: "user-profile", element: <UserProfile /> },
-
-        {
-          path: "order-history",
-          element: <OrderHistory />,
-          loader: orderHistoryLoader,
-        },
-
-        {
-          path: "order-history/:id",
-          element: <SingleOrderHistory />,
-          loader: singleOrderLoader,
-        },
-      ],
-    },
-  ],
-  {
-    basename: "/AVB_Fashions/", // required for subfolder hosting / GitHub Pages
-  }
-);
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  return <RouterProvider router={router} />;
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App

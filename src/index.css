@@ -1,102 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
 
 body {
-  font-family: "Merriweather", serif;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
-.banner {
-  height: 800px;
-  background: linear-gradient(0deg,
-      rgba(0, 0, 0, 0.25) 0%,
-      rgba(0, 0, 0, 0.15) 100%),
-    url("assets/banner1.jpg") lightgray 50% / cover no-repeat;
-  background-position: 10% 25%;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
-.shop-banner {
-  background: linear-gradient(0deg,
-      rgba(0, 0, 0, 0.25) 0%,
-      rgba(0, 0, 0, 0.25) 100%),
-    url("assets/shopbanner1.png") lightgray 3.589px 1.817px / 100% 197.462% no-repeat;
-}
-
-/* Add these styles to your CSS file */
-.sidebar-enter {
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.sidebar-enter-active {
-  transform: translateX(0);
-}
-
-.sidebar-exit {
-  transform: translateX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.sidebar-exit-active {
-  transform: translateX(-100%);
-}
-
-
-.singleOrder-table td {
-  text-align: left;
-}
-
-.singleOrder-table th {
-  text-align: left;
-}
-
-.header-padding-y {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-}
-
-.bg-brown {
-  background-color: brown !important;
-}
-
-.z-9999 {
-  z-index: 9999 !important;
-}
-
-.bg-common-color {
-  background-color: brown !important;
-}
-
-.menu-item {
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  text-align: center;
-  color: white;
-  transition: all 0.25s ease;
-  text-decoration: none;
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
   font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
-.menu-item:hover {
-  background-color: #f3e6d8;
-  color: #5a2d0c;
-}
-
-.menu-item-active {
-  background-color: #f3e6d8;
-  /* warm beige */
-  color: #5a2d0c !important;
-  /* deep brown */
-  font-weight: 500;
-}
-
-.main-header {
-  font-weight: 500;
-  width: 100%;
-  /* padding: 12px 0; */
-  font-size: 1.1rem;
-  text-align: center;
-  color: white;
-  transition: all 0.25s ease;
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }
