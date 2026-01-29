@@ -1,42 +1,108 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.bg-brown {
+  background-color: brown;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Sidebar hover effects */
+.nav-link:hover {
+  background-color: #495057;
+  transition: 0.2s ease-in-out;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Ensure body doesn't horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Sidebar Link Hover Effect */
+.nav-link.hover-effect:hover {
+  background-color: #495057;
+  color: #fff !important;
+  transition: 0.3s;
+}
+
+/* Ensure the main content doesn't get squished */
+.flex-grow-1 {
+  min-width: 0;
+}
+
+
+/* Sidebar Link Hover Effect */
+.hover-effect:hover {
+  background-color: #3d4349;
+  color: #0d6efd !important;
+  transition: all 0.2s ease;
+}
+
+/* Ensure smooth scrolling */
+html,
+body {
+  height: 100%;
+}
+
+.cursor-pointer {
+  transition: all 0.25s ease-in-out;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+  /* color: white !important; */
+  /* background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important; */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.sidebar-logo {
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .sidebar-logo {
+    max-width: 50% !important;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .sidebar-logo {
+    max-width: 50% !important;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.sidebar-close-icon {
+  position: fixed;
+  z-index: +2;
+  top: 15px;
+  left: 240px;
 }
 
-.card {
-  padding: 2em;
+.toggle-btn:hover {
+  background-color: transparent !important;
+  color: white !important;
+  border: none !important;
 }
 
-.read-the-docs {
-  color: #888;
+.toggle-btn {
+  border: none !important;
+}
+
+
+.toggle-btn ::backdrop:hover {
+  border: none !important;
+}
+
+.btn {
+  transition: box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn {
+  color: var(--bs-btn-hover-color) !important;
+  background-color: var(--bs-btn-hover-bg) !important;
+  border-color: var(--bs-btn-hover-border-color) !important;
 }
