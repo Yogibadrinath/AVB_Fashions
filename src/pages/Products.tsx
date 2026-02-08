@@ -40,7 +40,7 @@ const Products = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        hideLoader();
+        // hideLoader();
       }
     };
 
@@ -90,9 +90,9 @@ const Products = () => {
             <div
               className={`card shadow-sm h-100 cursor-pointer animatable ${animations[index % animations.length]
                 }`}
-              style={{
-                animationDelay: `${index * 0.12}s`,
-              }}
+            // style={{
+            //   animationDelay: `${index * 0.12}s`,
+            // }}
             >
               {/* Image Wrapper prevents ALT flash */}
               <div className="image-wrapper">
@@ -127,7 +127,7 @@ const Products = () => {
                 <small className="fw-bold d-block">
                   {img.category}
                 </small>
-                <small>{img.model}</small>
+                <small>{img.model} - {img.cost}</small>
               </div>
             </div>
           </div>

@@ -57,9 +57,9 @@ const Categories = () => {
             className={`card cursor-pointer h-100 animatable ${
               animations[index % animations.length]
             }`}
-            style={{
-              animationDelay: `${index * 0.15}s`,
-            }}
+            // style={{
+            //   animationDelay: `${index * 0.15}s`,
+            // }}
             onClick={() => handleNavigate(category.title)}
           >
             <img

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getTopImages, type ProductImage } from "../components/GetImages";
 import { useLoader } from "../context/LoaderContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import { ErrorAlert } from "../components/NotificationAlert";
 
 const Dashboard = () => {
     const [images, setImages] = useState<ProductImage[]>([]);
@@ -28,19 +29,22 @@ const Dashboard = () => {
     //----------------------------------------
     // Fetch Images
     //----------------------------------------
-    const fetchImages = async () => {
-        showLoader();
 
-        try {
-            const data = await getTopImages();
-            setImages(data);
-        } catch (err) {
-            console.error("Failed to load images", err);
-            hideLoader();
-        }
-    };
 
     useEffect(() => {
+        const fetchImages = async () => {
+            showLoader();
+
+            try {
+                const data = await getTopImages();
+                setImages(data);
+            } catch (err) {
+                console.error(err);
+                ErrorAlert("Unable to Fetch Images!!!");
+            } finally {
+                // hideLoader();
+            }
+        };
         fetchImages();
     }, []);
 
@@ -75,9 +79,9 @@ const Dashboard = () => {
                         <div
                             className={`card shadow-sm h-100 cursor-pointer animatable ${animations[index % animations.length]
                                 }`}
-                            style={{
-                                animationDelay: `${index * 0.12}s`,
-                            }}
+                        // style={{
+                        //     animationDelay: `${index * 0.12}s`,
+                        // }}
                         >
                             {/* Image Wrapper prevents ALT flash */}
                             <div className="image-wrapper">
@@ -102,7 +106,7 @@ const Dashboard = () => {
                                 <small className="fw-bold d-block">
                                     {img.category}
                                 </small>
-                                <small>{img.model}</small>
+                                <small>{img.model} - {img.cost}</small>
                             </div>
                         </div>
                     </div>
