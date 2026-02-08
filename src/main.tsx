@@ -5,13 +5,18 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { LoaderProvider } from "./context/LoaderContext";
+import { AuthProvider } from "./components/AuthContext";
+import "animate.css/animate.compat.css"
+import "./styles/animations.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <HashRouter>
-      <LoaderProvider>
-        <App />
-      </LoaderProvider>
-    </HashRouter >
+    <AuthProvider>
+      <HashRouter>
+        <LoaderProvider>
+          <App />
+        </LoaderProvider>
+      </HashRouter >
+    </AuthProvider>
   </React.StrictMode>
 );

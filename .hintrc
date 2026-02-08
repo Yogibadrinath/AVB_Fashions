@@ -7,6 +7,7 @@
     "axe/aria": "off",
     "axe/forms": "off",
     "axe/text-alternatives": "off",
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "typescript-config/strict": "off"
   }
 }

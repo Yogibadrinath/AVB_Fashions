@@ -27,6 +27,7 @@ export interface ProductImage {
   storagePath: string;
   category: string;
   model: string;
+  cost: string;
 }
 
 export const getImagesByCategory = async (

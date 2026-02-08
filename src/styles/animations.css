@@ -1,0 +1,63 @@
+.block {
+  height: 5em !important;
+  line-height: 5em !important;
+  width: 10em !important;
+  background: #464646 !important;
+  color: #fdfdfd !important;
+  text-align: center !important;
+  margin: 1em auto !important;
+  text-shadow: 0 0 1px #333 !important;
+}
+
+.animatable {
+  visibility: hidden !important;
+  animation-play-state: paused !important;
+}
+
+.animated {
+  visibility: visible !important;
+  animation-fill-mode: both !important;
+  animation-duration: 1s !important;
+  animation-play-state: running !important;
+}
+
+/* Note: !important is not used inside @keyframes as it is invalid/ignored there */
+
+.animated.animationDelay {
+  animation-delay: 0.4s !important;
+}
+.animated.animationDelayMed {
+  animation-delay: 1.2s !important;
+}
+.animated.animationDelayLong {
+  animation-delay: 1.6s !important;
+}
+.animated.fadeBgColor {
+  animation-name: fadeBgColor !important;
+}
+.animated.bounceIn {
+  animation-name: bounceIn !important;
+}
+.animated.bounceInRight {
+  animation-name: bounceInRight !important;
+}
+.animated.bounceInLeft {
+  animation-name: bounceInLeft !important;
+}
+.animated.fadeIn {
+  animation-name: fadeIn !important;
+}
+.animated.fadeInDown {
+  animation-name: fadeInDown !important;
+}
+.animated.fadeInUp {
+  animation-name: fadeInUp !important;
+}
+.animated.moveUp {
+  animation-name: moveUp !important;
+}
+
+.card-img-top {
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
