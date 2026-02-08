@@ -127,7 +127,7 @@ const Products = () => {
                 <small className="fw-bold d-block">
                   {img.category}
                 </small>
-                <small>{img.model} - {img.cost}</small>
+                <small>{img.model} - ₹{img.cost}</small>
               </div>
             </div>
           </div>
