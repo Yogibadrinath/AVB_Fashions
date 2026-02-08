@@ -13,7 +13,7 @@ const Upload = () => {
 
   const [dropDownData, setDropDownData] = useState([
     {
-      Category: "Chudihar Big", models: [
+      Category: "Chudidhars Sets", models: [
         { model: "Palazo Suit" }, { model: "Patiala Suit" }, { model: "Floor Length Dress" }, { model: "Kurtha" },
         { model: "Lehanga with Coat Modal" },
         { model: "Aliya Cut Floor Length Dress" }
@@ -34,7 +34,7 @@ const Upload = () => {
       ]
     },
     {
-      Category: "Boys Sets", models: [
+      Category: "Kids Boys", models: [
         { model: "Sherwany" },
         { model: "Coat Set" },
         { model: "Jubha Set" },
@@ -61,7 +61,7 @@ const Upload = () => {
       ]
     },
     {
-      Category: "Girls Small", models: [
+      Category: "Kids Girls", models: [
         { model: "Frock" },
         { model: "Long Frock" },
         { model: "Patiala Set" },
@@ -103,6 +103,23 @@ const Upload = () => {
       Category: "Kids Inners", models: [
         { model: "Cut Drawers" },
         { model: "Full Drawers" }
+      ]
+    },
+    {
+      Category: "Vesti & Lungi", models: [
+        { model: "Vesti" },
+        { model: "Lungi" },
+      ]
+    },
+    {
+      Category: "Towels & BedSheets", models: [
+        { model: "Towels" },
+        { model: "BedSheets" },
+      ]
+    },
+    {
+      Category: "Salwa", models: [
+        { model: "Salwa" },
       ]
     },
   ]);

@@ -22,14 +22,17 @@ const Categories = () => {
   // Categories
   //----------------------------------
   const categories = [
-    { id: 1, title: "Chudihar Big", image: img1 },
+    { id: 1, title: "Chudidhars Sets", image: img1 },
     { id: 2, title: "Tops", image: img1 },
-    { id: 3, title: "Boys Sets", image: img1 },
+    { id: 3, title: "Kids Boys", image: img1 },
     { id: 4, title: "Girls Pants", image: img1 },
-    { id: 5, title: "Girls Small", image: img1 },
+    { id: 5, title: "Kids Girls", image: img1 },
     { id: 6, title: "Ladies Inners", image: img1 },
     { id: 7, title: "Gents Inners", image: img1 },
     { id: 8, title: "Kids Inners", image: img1 },
+    { id: 9, title: "Vesti & Lungi", image: img1 },
+    { id: 10, title: "Towels & BedSheets", image: img1 },
+    { id: 11, title: "Salwa", image: img1 },
   ];
 
   //----------------------------------
